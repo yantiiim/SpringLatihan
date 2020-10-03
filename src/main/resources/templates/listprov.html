@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-umum}">
+    <head>
+        <title>List Provinsi</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <main role="main" class="flex-shrink-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="my-5">
+                                <table class="table table-striped table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama</th>
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="pr: ${listProvinsi}">
+                                            <td th:text="${pr.idProvinsi}"></td>
+                                            <td th:text="${pr.namaProvinsi}"></td>
+                                            <td><a th:href="@{|/provinsidetail/${pr.idProvinsi}|}">Edit</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-umum}">
+    <head>
+        <title>Tambah Provinsi</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <main role="main" class="flex-shrink-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="my-5">
+                                <form th:action="@{/saveprov}" th:object="${provinsi}" method="post">
+                                    <div class="form-group">
+                                        <label for="kode">Kode Provinsi :</label>
+                                        <input type="text" class="form-control" id="id" th:field="*{idProvinsi}">
+                                        <span th:if="${#fields.hasErrors('idProvinsi')}" th:errors="*{idProvinsi}" class="text-danger"></span>
+                                    </div>
+                                    <div>
+                                        <label for="nama">Nama Provinsi :</label>
+                                        <input type="text" class="form-control" id="nama" th:field="*{namaProvinsi}">
+                                        <span th:if="${#fields.hasErrors('namaProvinsi')}" th:errors="*{namaProvinsi}" class="text-danger"></span>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

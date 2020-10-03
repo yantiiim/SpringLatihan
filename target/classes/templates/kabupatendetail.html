@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-umum}">
+    <head>
+        <title>Kabupaten Detail</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <main role="main" class="flex-shrink-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="my-5">
+                                <form th:action="@{/updatekab}" th:object="${kabupaten}" method="post">
+                                    <div class="form-group">
+                                        <label for="kode">Kode Kabupaten :</label>
+                                        <input type="text" class="form-control" id="id" th:field="*{idKabupaten}">
+                                        <span th:if="${#fields.hasErrors('idKabupaten')}" th:errors="*{idKabupaten}" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama">Nama Kabupaten :</label>
+                                        <input type="text" class="form-control" id="nama" th:field="*{namaKabupaten}">
+                                        <span th:if="${#fields.hasErrors('namaKabupaten')}" th:errors="*{namaKabupaten}" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama">Nama Provinsi :</label>
+                                        <select class="form-control" th:field="*{kodeProvinsi}">
+                                            <option th:each="pr: ${provinsi}" th:value="${pr.idProvinsi}" th:text="${pr.namaProvinsi}"></option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

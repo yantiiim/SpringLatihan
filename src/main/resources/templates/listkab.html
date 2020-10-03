@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-umum}">
+    <head>
+        <title>List Kabupaten</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <main role="main" class="flex-shrink-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form th:action="@{/listkabcari}">
+                                <input type="text" name="nama">
+                                <input type="submit">
+                            </form>
+                            <section class="my-5">
+                                <table class="table table-striped table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama</th>
+                                            <th>Nama Provinsi</th>
+                                            <th colspan="2">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="ka: ${listKabupaten}">
+                                            <td th:text="${ka.idKabupaten}"></td>
+                                            <td th:text="${ka.namaKabupaten}"></td>
+                                            <td th:text="${ka.provinsi.namaProvinsi}"></td>
+                                            <td><a th:href="@{|/kabupatendetail/${ka.idKabupaten}|}">Edit</a></td>
+                                            <td><a th:href="@{|/deletekab/${ka.idKabupaten}|}">Delete</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

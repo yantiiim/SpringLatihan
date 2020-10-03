@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-umum}">
+    <head>
+        <title>Tambah Kecamatan</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" th:src="@{/js/addkab.js}"></script>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <main role="main" class="flex-shrink-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="my-5">
+                                <form th:action="@{/savekec}" th:object="${kecamatan}" method="post">
+                                    <div class="form-group">
+                                        <label for="nama">Nama Provinsi :</label>
+                                        <select class="form-control" id="dataprovinsi" th:field="*{kodeProvinsi}" onchange="getKab(this.value)">
+                                            
+                                        </select>
+                                        <span th:if="${#fields.hasErrors('kodeProvinsi')}" th:errors="*{kodeProvinsi}" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama">Nama Kabupaten :</label>
+                                        <select class="form-control" id="datakab" th:field="*{kodeKabupaten}">
+                                            
+                                        </select>
+                                        <span th:if="${#fields.hasErrors('kodeKabupaten')}" th:errors="*{kodeKabupaten}" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kode"> ID Kecamatan:</label>
+                                        <input type="text" class="form-control" id="id" th:field="*{idKecamatan}">
+                                        <span th:if="${#fields.hasErrors('idKecamatan')}" th:errors="*{idKecamatan}" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kode"> Nama Kecamatan:</label>
+                                        <input type="text" class="form-control" id="nama" th:field="*{namaKecamatan}">
+                                        <span th:if="${#fields.hasErrors('namaKecamatan')}" th:errors="*{namaKecamatan}" class="text-danger"></span>
+                                    </div>
+                                   
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

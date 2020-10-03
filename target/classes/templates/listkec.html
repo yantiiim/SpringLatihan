@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-umum}">
+    <head>
+        <title>List Kecamatan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <main role="main" class="flex-shrink-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form th:action="@{/listkeccari}">
+                                <input type="text" name="nama">
+                                <input type="submit">
+                            </form>
+                            <section class="my-5">
+                                <table class="table table-striped table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama Kecamatan</th>
+                                            <th>Nama Kabupaten</th>
+                                            <th colspan="2">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="ke: ${listKecamatan}">
+                                            <td th:text="${ke.idKecamatan}"></td>
+                                            <td th:text="${ke.namaKecamatan}"></td>
+                                            <td th:text="${ke.kabupaten.namaKabupaten}"></td>
+                                            <td><a th:href="@{|/kecamatandetail/${ke.idKecamatan}|}">Edit</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

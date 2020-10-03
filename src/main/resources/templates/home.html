@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-umum}">
+    <head>
+        <title>Selamat Datang</title>
+    </head>
+    <body>
+        
+        <div layout:fragment="content">
+            <main role="main" class="flex-shrink-0">
+                <div class="container">
+                        <section class="my-5">
+                            <h1 th:text="${nama}"></h1>
+                            <p>ini isinya</p>
+                        </section>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
